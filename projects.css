@@ -1,0 +1,146 @@
+/* General reset and body styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header Styling */
+header {
+    background: linear-gradient(135deg, #008FB3, #00d4ff);
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 2px solid #fff;
+}
+
+header h2 {
+    color: white;
+    font-size: 36px;
+}
+
+/* Projects Section */
+.projects-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.projects {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+/* General Styling for Project Cards */
+.project-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-card .icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+    transition: color 0.2s ease; /* Smooth transition for color change */
+}
+
+/* Icon Colors for Specific Projects */
+.temple-reservation .icon {
+    color: #d32f2f; /* Red color for Temple Reservation */
+}
+
+.urban-agriculture .icon {
+    color: #4caf50; /* Green color for Urban Agriculture */
+}
+
+/* Common Icon Settings for Both Projects */
+.project-card .icon {
+    color: #333; /* Default icon color */
+}
+
+.project-card h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.project-card p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.project-card .project-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #008FB3, #6FCEFF); /* Gradient background */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.project-card .project-link:hover {
+    background: linear-gradient(45deg, #6FCEFF, #008FB3); /* Reverse gradient on hover */
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #008FB3;
+    color: white;
+    margin-top: 50px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .projects {
+        flex-direction: column; /* Stack the project cards vertically on small screens */
+        align-items: center;
+    }
+
+    .project-card {
+        width: 90%; /* Make each card take up most of the width */
+        margin-bottom: 30px;
+    }
+
+    header h2 {
+        font-size: 28px;
+    }
+}
+
+/* Navbar Styling */
+.navbar {
+    margin-top: 20px;
+}
+
+.navbar a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #ffdd57;
+}

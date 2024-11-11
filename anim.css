@@ -1,0 +1,166 @@
+/* General reset and body styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #008FB3; /* Navbar background color */
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+    margin: 0 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #ffdd57;  /* Bright color on hover */
+    transform: scale(1.1); /* Slight scale-up on hover */
+}
+
+/* Active link styling */
+.navbar a.active {
+    color: #ffdd57;
+    font-weight: bold;
+}
+
+/* Achievements Container */
+.achievements-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.achievement-cards {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Achievement Card */
+.achievement-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    opacity: 0;
+    transform: translateY(50px);
+    position: relative;
+    overflow: hidden;
+    border: 3px solid transparent; /* Initially no border, transparent */
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    border-color: #ffdd57; /* Add border color on hover */
+}
+
+.achievement-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+/* Specific Icon Color Based on Achievement Type */
+.achievement-card .hackerrank .achievement-icon {
+    color: #2EC866; /* Green color for HackerRank */
+}
+
+.achievement-card .elab .achievement-icon {
+    color: #ff9800; /* Gold color for ELAB */
+}
+
+.achievement-card .zonal .achievement-icon {
+    color: #008FB3; /* Blue color for Zonal Player */
+}
+
+.achievement-card .headboy .achievement-icon {
+    color: #3F51B5; /* Blue color for Head Boy */
+}
+
+.achievement-card .sports .achievement-icon {
+    color: #ff5722; /* Orange color for Sports */
+}
+
+.achievement-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.achievement-card p {
+    color: #555;
+    font-size: 16px;
+}
+
+/* Achievement Image */
+.achievement-image {
+    margin-top: 20px;
+    width: 100%; /* Ensure the image takes up the full width of the container */
+    height: auto; /* Let the height adjust based on aspect ratio */
+    max-height: 200px; /* Set a max-height to avoid images becoming too tall */
+    overflow: hidden; /* Hide parts of the image that overflow */
+}
+
+.achievement-image img {
+    width: 100%; /* Make the image take up 100% of the container width */
+    height: 100%; /* Make the image fill the height of its container */
+    object-fit: cover; /* Ensure the image covers the entire container, cropping if necessary */
+    border-radius: 8px; /* Optional: To give rounded corners to the image */
+}
+
+/* Keyframe animation for fadeInUp */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation Trigger */
+.achievement-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.achievement-card:nth-child(odd) {
+    animation-delay: 0.3s;
+}
+
+.achievement-card:nth-child(even) {
+    animation-delay: 0.6s;
+}
+
+/* Card Layout on Mobile Devices */
+@media (max-width: 768px) {
+    .achievement-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .achievement-card {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}

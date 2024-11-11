@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Achievements - Anish's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="anim.css"> <!-- Add animation styles here -->
+</head>
+<body>
+
+    <header>
+        <h2>Anish's Achievements</h2>
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="skills-proficiency.html">Skills</a>
+            <a href="projects.html">Projects</a>
+        </nav>
+    </header>
+
+    <section class="achievements-container">
+        <h2 class="section-title">Proud Achievements 🚀</h2>
+
+        <div class="achievement-cards">
+            <!-- Existing achievements -->
+            <div class="achievement-card">
+                <div class="achievement-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3>Zonal Player</h3>
+                <p>Selected as Zonal Player for Cricket, Handball, and Table Tennis in school competitions.</p>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h3>Head Boy</h3>
+                <p>Honored with the role of Head Boy in school, demonstrating leadership and responsibility.</p>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <h3>Sports Recognition</h3>
+                <p>Acknowledged for outstanding achievements and dedication in various sports disciplines.</p>
+            </div>
+
+            <!-- New achievements -->
+            <div class="achievement-card">
+                <div class="achievement-icon">
+                    <i class="fab fa-hackerrank"></i>
+                </div>
+                <h3>HackerRank Profile</h3>
+                <p>Earned numerous certifications and badges in problem-solving and algorithms on HackerRank.</p>
+                <div class="achievement-image">
+                    <img src="hac.jpg" alt="HackerRank Profile">
+                </div>
+            </div>
+
+            <div class="achievement-card">
+                <div class="achievement-icon">
+                    <i class="fas fa-briefcase"></i> <!-- ELAB icon -->
+                </div>
+                <h3>ELAB Working</h3>
+                <p>Collaborated with ELAB in various projects, contributing to the growth and innovation of the team.</p>
+                <div class="achievement-image">
+                    <img src="elab.jpg" alt="ELAB Working">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animation for Achievements Section -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const achievementCards = document.querySelectorAll(".achievement-card");
+
+            achievementCards.forEach((card, index) => {
+                card.style.animation = `fadeInUp 0.6s ease-out ${index * 0.3}s forwards`;
+            });
+        });
+    </script>
+
+</body>
+</html>
