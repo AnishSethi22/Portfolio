@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAA Section By Anish Sethi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f5f7fa;
+        }
+
+        /* DAA Section Styles */
+        .daa-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #f1f5f9 100%);
+            padding: 120px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .daa-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #3498db, #9b59b6, #2ecc71);
+            z-index: 1;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #9b59b6);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-bottom: 70px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .daa-introduction {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 1.15rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            border-top: 4px solid #3498db;
+        }
+
+        .daa-category {
+            margin-bottom: 70px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+            padding: 35px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .daa-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .daa-category h3 {
+            font-size: 1.7rem;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .daa-category h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #3498db 0%, rgba(52, 152, 219, 0.1) 100%);
+        }
+
+        .daa-category h3 i {
+            margin-right: 15px;
+            color: #3498db;
+            font-size: 1.8rem;
+            background: rgba(52, 152, 219, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .daa-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .algorithm-table {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .algorithm-table table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .algorithm-table th, .algorithm-table td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .algorithm-table th {
+            background-color: #f1f5f9;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.95rem;
+        }
+
+        .algorithm-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .algorithm-table tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .best-case {
+            color: #27ae60;
+            font-weight: 600;
+        }
+
+        .avg-case {
+            color: #f39c12;
+            font-weight: 600;
+        }
+
+        .worst-case {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        .implementation-example, .key-problems, .key-applications {
+            flex: 1;
+            min-width: 300px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .implementation-example h4, .key-problems h4, .key-applications h4 {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(52, 152, 219, 0.2);
+        }
+
+        .key-problems ul, .key-applications ul {
+            padding-left: 20px;
+        }
+
+        .key-problems li, .key-applications li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .key-problems li::before, .key-applications li::before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .code-example {
+            flex: 1;
+            min-width: 350px;
+            background-color: #2c3e50;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .code-example pre {
+            margin: 0;
+        }
+
+        .code-example code {
+            color: #ecf0f1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .daa-projects, .daa-elab, .daa-presentations {
+            margin-top: 80px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            padding: 30px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border-top: 4px solid transparent;
+        }
+
+        .project-card:nth-child(1) {
+            border-top-color: #3498db;
+        }
+
+        .project-card:nth-child(2) {
+            border-top-color: #9b59b6;
+        }
+
+        .project-card:nth-child(3) {
+            border-top-color: #2ecc71;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-card img {
+            border-radius: 8px;
+            margin-bottom: 15px;
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+        }
+
+        .project-card h4 {
+            margin: 15px 0 12px;
+            color: #2c3e50;
+            font-size: 1.4rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .project-tech span {
+            background-color: #e1f0ff;
+            color: #3498db;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .project-tech span:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .project-details {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .project-details p {
+            margin: 8px 0;
+        }
+
+        .project-details strong {
+            color: #2c3e50;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .skill-category h4 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .skill-category h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #3498db;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-tag {
+            background-color: #f1f5f9;
+            color: #2c3e50;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-tag:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+        }
+
+        .presentations-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .presentation-item {
+            display: flex;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            padding: 30px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .presentation-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .presentation-icon {
+            color: #e74c3c;
+            font-size: 2.2rem;
+            margin-right: 25px;
+            background: rgba(231, 76, 60, 0.1);
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .presentation-details h4 {
+            margin: 0 0 15px;
+            color: #2c3e50;
+            font-size: 1.3rem;
+        }
+
+        .presentation-details p {
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .view-ppt {
+            display: inline-block;
+            padding: 8px 20px;
+            color: white;
+            background-color: #e74c3c;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.2);
+        }
+
+        .view-ppt:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        /* ELAB Visualization Styles */
+        .elab-visualization {
+            margin-top: 40px;
+        }
+
+        .elab-chart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 50px 0;
+        }
+
+        .elab-chart {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .elab-chart img {
+            border-radius: 50%;
+            border: 10px solid rgba(52, 152, 219, 0.1);
+        }
+
+        .elab-content {
+            text-align: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .elab-progress {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .progress-item {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .progress-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .progress-title {
+            font-weight: 500;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+
+        .progress-percentage {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .progress-item:nth-child(1) .progress-percentage {
+            color: #27ae60;
+        }
+
+        .progress-item:nth-child(2) .progress-percentage {
+            color: #3498db;
+        }
+
+        .progress-item:nth-child(3) .progress-percentage {
+            color: #9b59b6;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 12px;
+            background-color: #f1f5f9;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+            position: relative;
+        }
+
+        .progress-item:nth-child(1) .progress-bar-fill {
+            background: linear-gradient(90deg, #27ae60, #2ecc71);
+        }
+
+        .progress-item:nth-child(2) .progress-bar-fill {
+            background: linear-gradient(90deg, #2980b9, #3498db);
+        }
+
+        .progress-item:nth-child(3) .progress-bar-fill {
+            background: linear-gradient(90deg, #8e44ad, #9b59b6);
+        }
+
+        .progress-bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                rgba(255, 255, 255, 0.1) 25%, 
+                rgba(255, 255, 255, 0.2) 50%, 
+                rgba(255, 255, 255, 0.1) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -100% 0;
+            }
+            100% {
+                background-position: 100% 0;
+            }
+        }
+
+        .algorithm-counts {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .count-item {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .count-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .count-item:nth-child(1)::before {
+            background: linear-gradient(90deg, #3498db, #2980b9);
+        }
+
+        .count-item:nth-child(2)::before {
+            background: linear-gradient(90deg, #9b59b6, #8e44ad);
+        }
+
+        .count-item:nth-child(3)::before {
+            background: linear-gradient(90deg, #2ecc71, #27ae60);
+        }
+
+        .count-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .count-value {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        .count-label {
+            color: #2c3e50;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .section-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .daa-category h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .daa-section {
+                padding: 80px 0 60px;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .daa-content {
+                flex-direction: column;
+            }
+
+            .projects-grid, .presentations-content {
+                grid-template-columns: 1fr;
+            }
+
+            .presentation-item {
+                flex-direction: column;
+            }
+
+            .presentation-icon {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .algorithm-counts {
+                grid-template-columns: 1fr;
+            }
+
+            .elab-progress {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-container {
+                padding: 0 20px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 40px;
+            }
+
+            .daa-category {
+                padding: 25px;
+            }
+
+            .algorithm-table {
+                overflow-x: auto;
+            }
+
+            .count-value {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Special highlight for important elements */
+        .highlight {
+            position: relative;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #3498db, #9b59b6);
+
+            /* ELAB Visualization Styles */
+        .elab-visualization {
+            margin-top: 40px;
+        }
+
+        .elab-chart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 50px 0;
+        }
+
+        .elab-chart {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .elab-chart img {
+            border-radius: 50%;
+            border: 10px solid rgba(52, 152, 219, 0.1);
+        }
+
+        .elab-content {
+            text-align: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .elab-progress {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .progress-item {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .progress-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .progress-title {
+            font-weight: 500;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+
+        .progress-percentage {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .progress-item:nth-child(1) .progress-percentage {
+            color: #27ae60;
+        }
+
+        .progress-item:nth-child(2) .progress-percentage {
+            color: #3498db;
+        }
+
+        .progress-item:nth-child(3) .progress-percentage {
+            color: #9b59b6;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 12px;
+            background-color: #f1f5f9;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+            position: relative;
+        }
+
+        .progress-item:nth-child(1) .progress-bar-fill {
+            background: linear-gradient(90deg, #27ae60, #2ecc71);
+        }
+
+        .progress-item:nth-child(2) .progress-bar-fill {
+            background: linear-gradient(90deg, #2980b9, #3498db);
+        }
+
+        .progress-item:nth-child(3) .progress-bar-fill {
+            background: linear-gradient(90deg, #8e44ad, #9b59b6);
+        }
+
+        .progress-bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                rgba(255, 255, 255, 0.1) 25%, 
+                rgba(255, 255, 255, 0.2) 50%, 
+                rgba(255, 255, 255, 0.1) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -100% 0;
+            }
+            100% {
+                background-position: 100% 0;
+            }
+        }
+
+        .algorithm-counts {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .count-item {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .count-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .count-item:nth-child(1)::before {
+            background: linear-gradient(90deg, #3498db, #2980b9);
+        }
+
+        .count-item:nth-child(2)::before {
+            background: linear-gradient(90deg, #9b59b6, #8e44ad);
+        }
+
+        .count-item:nth-child(3)::before {
+            background: linear-gradient(90deg, #2ecc71, #27ae60);
+        }
+
+        .count-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .count-value {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        .count-label {
+            color: #2c3e50;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .section-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .daa-category h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .daa-section {
+                padding: 80px 0 60px;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .daa-content {
+                flex-direction: column;
+            }
+
+            .projects-grid, .presentations-content {
+                grid-template-columns: 1fr;
+            }
+
+            .presentation-item {
+                flex-direction: column;
+            }
+
+            .presentation-icon {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .algorithm-counts {
+                grid-template-columns: 1fr;
+            }
+
+            .elab-progress {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-container {
+                padding: 0 20px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 40px;
+            }
+
+            .daa-category {
+                padding: 25px;
+            }
+
+            .algorithm-table {
+                overflow-x: auto;
+            }
+
+            .count-value {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Special highlight for important elements */
+        .highlight {
+            position: relative;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #3498db, #9b59b6);
+        }
+    </style>
+</head>
+<body>
+
+<!-- DAA Section -->
+<section id="daa" class="daa-section">
+    <div class="section-container">
+        <h2 class="section-title">Design & Analysis of Algorithms</h2>
+        <p class="section-subtitle">My research and implementation work in algorithmic problem-solving</p>
+        
+        <div class="daa-introduction">
+            <p>My coursework in DAA has equipped me with a strong foundation in algorithm design paradigms and complexity analysis. Here are some key concepts I've mastered:</p>
+        </div>
+
+        <!-- Sorting Algorithms -->
+        <div class="daa-category">
+            <h3><i class="fas fa-sort-amount-up"></i> Sorting Algorithms</h3>
+            <div class="daa-content">
+                <div class="algorithm-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Algorithm</th>
+                                <th>Best Case</th>
+                                <th>Average Case</th>
+                                <th>Worst Case</th>
+                                <th>Space</th>
+                                <th>Stable</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Merge Sort</td>
+                                <td class="best-case">O(n log n)</td>
+                                <td class="avg-case">O(n log n)</td>
+                                <td class="worst-case">O(n log n)</td>
+                                <td>O(n)</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Quick Sort</td>
+                                <td class="best-case">O(n log n)</td>
+                                <td class="avg-case">O(n log n)</td>
+                                <td class="worst-case">O(n²)</td>
+                                <td>O(log n)</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td>Heap Sort</td>
+                                <td class="best-case">O(n log n)</td>
+                                <td class="avg-case">O(n log n)</td>
+                                <td class="worst-case">O(n log n)</td>
+                                <td>O(1)</td>
+                                <td>No</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Graph Algorithms -->
+        <div class="daa-category">
+            <h3><i class="fas fa-project-diagram"></i> Graph Algorithms</h3>
+            <div class="daa-content">
+                <div class="algorithm-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Algorithm</th>
+                                <th>Time Complexity</th>
+                                <th>Space Complexity</th>
+                                <th>Applications</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Dijkstra's</td>
+                                <td>O((V+E) log V)</td>
+                                <td>O(V)</td>
+                                <td>Shortest path (no negative edges)</td>
+                            </tr>
+                            <tr>
+                                <td>Bellman-Ford</td>
+                                <td>O(VE)</td>
+                                <td>O(V)</td>
+                                <td>Shortest path (with negative edges)</td>
+                            </tr>
+                            <tr>
+                                <td>Floyd-Warshall</td>
+                                <td>O(V³)</td>
+                                <td>O(V²)</td>
+                                <td>All pairs shortest paths</td>
+                            </tr>
+                            <tr>
+                                <td>Kruskal's</td>
+                                <td>O(E log V)</td>
+                                <td>O(E + V)</td>
+                                <td>Minimum Spanning Tree</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dynamic Programming -->
+        <div class="daa-category">
+            <h3><i class="fas fa-table"></i> Dynamic Programming</h3>
+            <div class="daa-content">
+                <div class="code-example">
+                    <pre><code class="language-cpp">
+// Fibonacci using DP (Memoization)
+int fib(int n, vector<int>& memo) {
+    if (n <= 1) return n;
+    if (memo[n] != -1) return memo[n];
+    memo[n] = fib(n-1, memo) + fib(n-2, memo);
+    return memo[n];
+}
+
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+                    </code></pre>
+                </div>
+                <div class="key-problems">
+                    <h4>Key Problems Solved:</h4>
+                    <ul>
+                        <li>Knapsack problem</li>
+                        <li>Longest Common Subsequence</li>
+                        <li>Matrix Chain Multiplication</li>
+                        <li>Coin Change problem</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Divide and Conquer -->
+        <div class="daa-category">
+            <h3><i class="fas fa-code-branch"></i> Divide and Conquer</h3>
+            <div class="daa-content">
+                <div class="code-example">
+                    <pre><code class="language-cpp">
+// Merge Sort Implementation
+void mergeSort(int arr[], int l, int r) {
+    if (l < r) {
+        int m = l + (r - l) / 2;
+        mergeSort(arr, l, m);
+        mergeSort(arr, m+1, r);
+        merge(arr, l, m, r);
+    }
+}
+
+// Time Complexity: O(n log n) in all cases
+// Space Complexity: O(n)
+                    </code></pre>
+                </div>
+                <div class="key-applications">
+                    <h4>Other Applications:</h4>
+                    <ul>
+                        <li>Binary Search</li>
+                        <li>Closest Pair of Points</li>
+                        <li>Strassen's Matrix Multiplication</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+<!-- ELAB Section with Circular Visualization -->
+<div class="daa-elab">
+    <h3><i class="fas fa-flask"></i> ELAB Coding Solutions</h3>
+    <div class="elab-content">
+        <p>Completed over 250+ algorithmic problems on the ELAB platform, demonstrating proficiency in various algorithmic paradigms and problem-solving techniques.</p>
+        
+        <!-- ELAB Visualization -->
+        <div class="elab-visualization">
+            <div class="elab-chart-container">
+                <!-- This is where the ELAB circular visualization image will be placed -->
+                <div class="elab-chart">
+                    <img src="elab2025.jpg" alt="DAA ELAB Progress Visualization" style="max-width: 100%; height: auto;">
+                </div>
+            </div>
+
+            
+            <div class="elab-progress">
+                <div class="progress-item">
+                    <div class="progress-info">
+                        <div class="progress-title">Completed Challenges</div>
+                        <div class="progress-percentage">94%</div>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 94%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-info">
+                        <div class="progress-title">Accuracy Rate</div>
+                        <div class="progress-percentage">88%</div>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 88%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-info">
+                        <div class="progress-title">Optimal Solutions</div>
+                        <div class="progress-percentage">76%</div>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 76%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="algorithm-counts">
+                <div class="count-item">
+                    <div class="count-value">250+</div>
+                    <div class="count-label">Problems Solved</div>
+                </div>
+                <div class="count-item">
+                    <div class="count-value">15</div>
+                    <div class="count-label">Different Algorithm Types</div>
+                </div>
+                <div class="count-item">
+                    <div class="count-value">4</div>
+                    <div class="count-label">Programming Languages</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick Sort Implementation -->
+        <div class="daa-category">
+            <h3><i class="fas fa-sort"></i> Quick Sort Algorithm</h3>
+            <div class="daa-content">
+                <div class="code-example">
+                    <pre><code class="language-python">
+# Quick Sort Implementation
+def quickSort(arr, low, high):
+    if low < high:
+        pivot_index = partition(arr, low, high)
+        quickSort(arr, low, pivot_index - 1)
+        quickSort(arr, pivot_index + 1, high)
+
+def partition(arr, low, high):
+    pivot = arr[high]
+    i = low - 1
+    for j in range(low, high):
+        if arr[j] <= pivot:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    return i + 1
+
+# Time Complexity: O(n log n) average, O(n²) worst
+# Space Complexity: O(log n)
+                    </code></pre>
+                </div>
+                <div class="key-applications">
+                    <h4>Why Quick Sort for E-commerce?</h4>
+                    <ul>
+                        <li>Efficiency: O(n log n) average time complexity for large data sets</li>
+                        <li>Space Efficient: Uses in-place sorting, reducing memory overhead</li>
+                        <li>Scalability: Efficient for massive product catalogs</li>
+                        <li>Flexibility: Can be customized for sorting by different attributes (price, rating, etc.)</li>
+                        <li>Performance: Improves sorting time and user experience in product discovery</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+<!-- Presentations Section -->
+<div class="daa-presentations">
+    <h3><i class="fas fa-file-powerpoint"></i> Research & Presentations</h3>
+    <div class="presentations-content">
+        <div class="presentation-item">
+            <div class="presentation-icon">
+                <i class="fas fa-file-powerpoint"></i>
+            </div>
+            <div class="presentation-details">
+                <h4>Quick Sort Application</h4>
+                <p>Quick Sort is a divide-and-conquer algorithm that efficiently sorts elements by selecting a pivot and partitioning the array into smaller subarrays. It has an average time complexity of O(n log n) and performs well in practice despite its O(n²) worst-case complexity.
+                </p>
+                <a href="Quick sort Application.pdf" class="view-ppt">View Presentation</a>
+            </div>
+        </div>
+        
+</div>
+</div>
+</section>
+
+
+                    
